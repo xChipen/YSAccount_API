@@ -1,0 +1,68 @@
+﻿2024-09-09 09:46:17,453 INFO -API : ACC_VOUMST_M/Query
+2024-09-09 09:47:10,788 INFO -API : ACC_VOUMST_M/Query
+2024-09-09 10:22:20,449 INFO -Cannot open server 'ys' requested by the login. Client with IP address '111.241.115.15' is not allowed to access the server.  To enable access, use the Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+2024-09-09 10:22:20,470 INFO -RunSQL: SELECT ColumnName = col.column_name 
+                        FROM information_schema.table_constraints tc 
+                        INNER JOIN information_schema.key_column_usage col 
+                              ON col.Constraint_Name = tc.Constraint_Name 
+                              AND col.Constraint_schema = tc.Constraint_schema 
+                        WHERE tc.Constraint_Type = 'Primary Key' AND col.Table_name = 'ACC_VOUMST_M'
+2024-09-09 10:22:20,577 INFO -API : ACC_VOUMST_M/Query
+2024-09-09 10:22:45,651 INFO -Cannot open server 'ys' requested by the login. Client with IP address '111.241.115.15' is not allowed to access the server.  To enable access, use the Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+2024-09-09 10:22:45,673 INFO -RunSQL: SELECT ColumnName = col.column_name 
+                        FROM information_schema.table_constraints tc 
+                        INNER JOIN information_schema.key_column_usage col 
+                              ON col.Constraint_Name = tc.Constraint_Name 
+                              AND col.Constraint_schema = tc.Constraint_schema 
+                        WHERE tc.Constraint_Type = 'Primary Key' AND col.Table_name = 'ACC_VOUMST_M'
+2024-09-09 10:22:45,780 INFO -API : ACC_VOUMST_M/Query
+2024-09-09 10:22:48,517 INFO -Cannot open server 'ys' requested by the login. Client with IP address '111.241.115.15' is not allowed to access the server.  To enable access, use the Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+2024-09-09 10:22:48,530 INFO -RunSQL: SELECT a.*, b.COMP_NAME from ACC_VOUMST_M a 
+LEFT JOIN ACC_COMPANY b ON a.VOMM_COMPID=b.COMP_ID 
+WHERE 1 = 1  AND a.VOMM_COMPID = 'de2fcfd4-7822-4dfd-b603-1e451d7e51c9'
+2024-09-09 10:22:49,605 INFO -Cannot open server 'ys' requested by the login. Client with IP address '111.241.115.15' is not allowed to access the server.  To enable access, use the Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+2024-09-09 10:22:49,617 INFO -RunSQL: SELECT a.*, b.ACNM_C_NAME, c.DEPT_NAME, d.TRAN_NAME, 
+e.ACNM_C_NAME as ACNM_C_NAME2, f.BANK_NAME, g.DEPT_NAME as DEPT_NAME2
+FROM ACC_VOUMST_D a 
+LEFT JOIN ACC_ACCNAME b ON a.VOMD_COMPID=b.ACNM_COMPID AND a.VOMD_ACCD = IsNull(b.ACNM_ID1,'')+IsNull(b.ACNM_ID2,'')+IsNull(b.ACNM_ID3,'')
+LEFT JOIN vw_DEPT c ON a.VOMD_COMPID=c.DEPT_COMPID AND a.VOMD_DEPTID=c.DEPT_ID
+LEFT JOIN vw_TRAIN d ON a.VOMD_COMPID=d.TRAN_COMPID AND a.VOMD_TRANID=d.TRAN_ID
+LEFT JOIN ACC_ACCNAME e ON a.VOMD_COMPID=e.ACNM_COMPID AND a.VOMD_SAV_BANK = IsNull(e.ACNM_ID1,'')+IsNull(e.ACNM_ID2,'')+IsNull(e.ACNM_ID3,'')
+LEFT JOIN ACC_BANK f ON a.VOMD_DUE_BANK=f.BANK_ID
+LEFT JOIN vw_DEPT g ON a.VOMD_COMPID=g.DEPT_COMPID AND a.VOMD_D_DEPTID=g.DEPT_ID
+
+WHERE 1=1  AND a.VOMD_COMPID = 'de2fcfd4-7822-4dfd-b603-1e451d7e51c9'
+2024-09-09 10:22:50,135 INFO -Cannot open server 'ys' requested by the login. Client with IP address '111.241.115.15' is not allowed to access the server.  To enable access, use the Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+2024-09-09 10:22:50,155 INFO -RunSQL: SELECT a.*, b.CODM_NAME2
+FROM ACC_VOUMST_TAX a 
+LEFT JOIN ACC_CODE_M b ON a.VOMT_FORMAT=ISNULL(b.CODM_ID2,'') + ISNULL(b.CODM_NAME2,'')
+WHERE b.CODM_ID1='06'
+ AND a.VOMT_COMPID = 'de2fcfd4-7822-4dfd-b603-1e451d7e51c9'
+2024-09-09 10:23:03,826 INFO -Cannot open server 'ys' requested by the login. Client with IP address '111.241.115.15' is not allowed to access the server.  To enable access, use the Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+2024-09-09 10:23:03,840 INFO -RunSQL: SELECT ColumnName = col.column_name 
+                        FROM information_schema.table_constraints tc 
+                        INNER JOIN information_schema.key_column_usage col 
+                              ON col.Constraint_Name = tc.Constraint_Name 
+                              AND col.Constraint_schema = tc.Constraint_schema 
+                        WHERE tc.Constraint_Type = 'Primary Key' AND col.Table_name = 'ACC_VOUMST_M'
+2024-09-09 10:23:03,865 INFO -API : ACC_VOUMST_M/Query2
+2024-09-09 10:23:04,384 INFO -Cannot open server 'ys' requested by the login. Client with IP address '111.241.115.15' is not allowed to access the server.  To enable access, use the Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+2024-09-09 10:23:04,402 INFO -RunSQL: SELECT distinct a.*, a.VOMM_A_USER_ID as USERID, c.USERNAME from ACC_VOUMST_M a 
+LEFT JOIN ACC_VOUMST_D b ON a.VOMM_COMPID=b.VOMD_COMPID AND a.VOMM_NO=b.VOMD_NO
+LEFT JOIN vw_USER c ON a.VOMM_COMPID=c.USER_COMPID AND a.VOMM_A_USER_ID=c.USERID
+WHERE 1=1 AND a.VOMM_COMPID = 'de2fcfd4-7822-4dfd-b603-1e451d7e51c9' AND a.VOMM_NO >= '202408140191' AND a.VOMM_NO <= '202408140191' AND a.VOMM_VALID  = 'Y'
+2024-09-09 10:26:16,560 INFO -API : ACC_VOUMST_M/Query2
+2024-09-09 10:28:58,436 INFO -API : ACC_VOUMST_M/Query2
+2024-09-09 10:29:12,301 INFO -API : ACC_VOUMST_M/Query
+2024-09-09 10:33:57,435 INFO -API : ACC_VOUMST_M_BATCH/Query
+2024-09-09 10:34:03,996 INFO -API : ACC_VOUMST_M_BATCH/Query
+2024-09-09 10:36:58,820 INFO -API : ACC_VOUMST_M_BATCH/Query
+2024-09-09 10:38:08,197 INFO -API : ACC_VOUMST_M_BATCH/Query
+2024-09-09 10:39:51,952 INFO -API : ACC_VOUMST_M_BATCH/Query
+2024-09-09 10:42:08,155 INFO -API : ACC_EXPENSE_RECEIPT_M /Query
+2024-09-09 10:42:08,178 INFO -rsAccExpenseReceiptM_qry: 無 費用申請單號
+2024-09-09 10:42:20,332 INFO -API : ACC_EXPENSE_RECEIPT_M /Query
+2024-09-09 10:42:20,347 INFO -rsAccExpenseReceiptM_qry: 無 費用申請單號
+2024-09-09 10:42:40,746 INFO -API : ACC_EXPENSE_RECEIPT_M /Query
+2024-09-09 10:42:49,067 INFO -rsAccExpenseReceiptM_qry: 無 費用申請單號
+2024-09-09 10:43:31,765 INFO -API : ACC_EXPENSE_RECEIPT_M /Query

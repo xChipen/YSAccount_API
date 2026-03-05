@@ -1,0 +1,538 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A2E9A36C-0AC1-4295-BC51-B66A3D1EB27E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YSAccountAPI</RootNamespace>
+    <AssemblyName>YSAccountAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44374</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.9\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.3.2.10, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.3.2\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NPOI, Version=2.5.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.5\lib\net45\NPOI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.5.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.5\lib\net45\NPOI.OOXML.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.5.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.5\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.5.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.5\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Json, Version=7.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Json.7.0.1\lib\net462\System.Net.Http.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Text.Encodings.Web, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.7.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.7.0.2\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccAccCodeController.cs" />
+    <Compile Include="Controllers\AccAccKindController.cs" />
+    <Compile Include="Controllers\AccAccKind_BatchController.cs" />
+    <Compile Include="Controllers\AccAccNameController.cs" />
+    <Compile Include="Controllers\AccAccountAgingPerController.cs" />
+    <Compile Include="Controllers\AccACE060MController.cs" />
+    <Compile Include="Controllers\AccACF100QController.cs" />
+    <Compile Include="Controllers\AccAllowanceMController.cs" />
+    <Compile Include="Controllers\AccAllowanceM_BatchController.cs" />
+    <Compile Include="Controllers\AccAssetParmController.cs" />
+    <Compile Include="Controllers\AccBalanceControlController.cs" />
+    <Compile Include="Controllers\AccBalanceController.cs" />
+    <Compile Include="Controllers\AccBankBalanceController.cs" />
+    <Compile Include="Controllers\AccBankController.cs" />
+    <Compile Include="Controllers\AccBPMController.cs" />
+    <Compile Include="Controllers\AccBudgetController.cs" />
+    <Compile Include="Controllers\AccCheckCounterController.cs" />
+    <Compile Include="Controllers\AccCodeMController.cs" />
+    <Compile Include="Controllers\AccCompanyController.cs" />
+    <Compile Include="Controllers\AccCustomGroupMController.cs" />
+    <Compile Include="Controllers\AccDailySaleController.cs" />
+    <Compile Include="Controllers\AccExpenseReceiptDController.cs" />
+    <Compile Include="Controllers\AccExpenseReceiptMController.cs" />
+    <Compile Include="Controllers\AccInvnoIdController.cs" />
+    <Compile Include="Controllers\AccJouralDController.cs" />
+    <Compile Include="Controllers\AccJouralMController.cs" />
+    <Compile Include="Controllers\AccJouralM_BatchController.cs" />
+    <Compile Include="Controllers\AccMemoController.cs" />
+    <Compile Include="Controllers\AccMonthAccountController.cs" />
+    <Compile Include="Controllers\AccMonthValuationController.cs" />
+    <Compile Include="Controllers\AccOtherAccountController.cs" />
+    <Compile Include="Controllers\AccPaAccountController.cs" />
+    <Compile Include="Controllers\AccPaCheckController.cs" />
+    <Compile Include="Controllers\AccPayMController.cs" />
+    <Compile Include="Controllers\AccPayM_BatchController.cs" />
+    <Compile Include="Controllers\AccPosSalesController.cs" />
+    <Compile Include="Controllers\AccPrepaidExpenseDController.cs" />
+    <Compile Include="Controllers\AccPrepaidExpenseMController.cs" />
+    <Compile Include="Controllers\AccPrepaidExpenseM_BatchController.cs" />
+    <Compile Include="Controllers\AccPrepayAccountDController.cs" />
+    <Compile Include="Controllers\AccPrepayAccountMController.cs" />
+    <Compile Include="Controllers\AccPrepayAccountM_BatchController.cs" />
+    <Compile Include="Controllers\AccPrepayAccountShareController.cs" />
+    <Compile Include="Controllers\AccPrintTempController.cs" />
+    <Compile Include="Controllers\AccQueryController.cs" />
+    <Compile Include="Controllers\AccReAccountController.cs" />
+    <Compile Include="Controllers\AccReceiveMController.cs" />
+    <Compile Include="Controllers\AccReceiveM_BatchController.cs" />
+    <Compile Include="Controllers\AccReCheckController.cs" />
+    <Compile Include="Controllers\AccRemitController.cs" />
+    <Compile Include="Controllers\AccExrateController.cs" />
+    <Compile Include="Controllers\AccUndueCheckController.cs" />
+    <Compile Include="Controllers\BasicController.cs" />
+    <Compile Include="Controllers\AccViewController.cs" />
+    <Compile Include="Controllers\AccVoumstDController.cs" />
+    <Compile Include="Controllers\AccVoumstMController.cs" />
+    <Compile Include="Controllers\AccVoumstM_BatchController.cs" />
+    <Compile Include="Controllers\AccMonthSaleCostController.cs" />
+    <Compile Include="Controllers\StoreProcedureController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="DAO\AccAccCodeDAO.cs" />
+    <Compile Include="DAO\AccAccKindDAO.cs" />
+    <Compile Include="DAO\AccAccKind_BatchDAO.cs" />
+    <Compile Include="DAO\AccAccountAgingPerDAO.cs" />
+    <Compile Include="DAO\AccACE060MDAO.cs" />
+    <Compile Include="DAO\AccACF100QDAO.cs" />
+    <Compile Include="DAO\AccAllowanceDDAO.cs" />
+    <Compile Include="DAO\AccAllowanceMDAO.cs" />
+    <Compile Include="DAO\AccAllowanceM_BatchDAO.cs" />
+    <Compile Include="DAO\AccAssetDAO.cs" />
+    <Compile Include="DAO\AccAssetDeprecDAO.cs" />
+    <Compile Include="DAO\AccAssetParmDAO.cs" />
+    <Compile Include="DAO\AccAssetTransDAO.cs" />
+    <Compile Include="DAO\AccBalanceControlDAO.cs" />
+    <Compile Include="DAO\AccAccNameDAO.cs" />
+    <Compile Include="DAO\AccBalanceDAO.cs" />
+    <Compile Include="DAO\AccBankBalanceDAO.cs" />
+    <Compile Include="DAO\AccBankDAO.cs" />
+    <Compile Include="DAO\AccBPMDAO.cs" />
+    <Compile Include="DAO\AccBudgetDAO.cs" />
+    <Compile Include="DAO\AccCheckCounterDAO.cs" />
+    <Compile Include="DAO\AccCodeMDAO.cs" />
+    <Compile Include="DAO\AccCompanyDAO.cs" />
+    <Compile Include="DAO\AccCustomDAO.cs" />
+    <Compile Include="DAO\AccCustomGroupDDAO.cs" />
+    <Compile Include="DAO\AccCustomGroupMDAO.cs" />
+    <Compile Include="DAO\AccDailySaleDAO.cs" />
+    <Compile Include="DAO\AccDeptDAO.cs" />
+    <Compile Include="DAO\AccEmployeeDAO.cs" />
+    <Compile Include="DAO\AccExpenseReceiptDDAO.cs" />
+    <Compile Include="DAO\AccExpenseReceiptMDAO.cs" />
+    <Compile Include="DAO\AccExrateDAO.cs" />
+    <Compile Include="DAO\AccInvnoIdDAO.cs" />
+    <Compile Include="DAO\AccJouralDDAO.cs" />
+    <Compile Include="DAO\AccJouralMDAO.cs" />
+    <Compile Include="DAO\AccJouralM_BatchDAO.cs" />
+    <Compile Include="DAO\AccMemoDAO.cs" />
+    <Compile Include="DAO\AccMonthAccountDAO.cs" />
+    <Compile Include="DAO\AccMonthPaCheckDAO.cs" />
+    <Compile Include="DAO\AccMonthReCheckDAO.cs" />
+    <Compile Include="DAO\AccMonthSaleCostDAO.cs" />
+    <Compile Include="DAO\AccMonthValuationDAO.cs" />
+    <Compile Include="DAO\AccOtherAccountDAO.cs" />
+    <Compile Include="DAO\AccPaAccountDAO.cs" />
+    <Compile Include="DAO\AccPaCheckDAO.cs" />
+    <Compile Include="DAO\AccPayDDAO.cs" />
+    <Compile Include="DAO\AccPayMDAO.cs" />
+    <Compile Include="DAO\AccPayM_BatchDAO.cs" />
+    <Compile Include="DAO\AccPosSalesDAO.cs" />
+    <Compile Include="DAO\AccPrepaidExpenseDDAO.cs" />
+    <Compile Include="DAO\AccPrepaidExpenseMDAO.cs" />
+    <Compile Include="DAO\AccPrepaidExpenseM_BatchDAO.cs" />
+    <Compile Include="DAO\AccPrepayAccountDDAO.cs" />
+    <Compile Include="DAO\AccPrepayAccountMDAO.cs" />
+    <Compile Include="DAO\AccPrepayAccountM_BatchDAO.cs" />
+    <Compile Include="DAO\AccPrepayAccountShareDAO.cs" />
+    <Compile Include="DAO\AccPrintTempDAO.cs" />
+    <Compile Include="DAO\AccQueryDAO.cs" />
+    <Compile Include="DAO\AccReAccountDAO.cs" />
+    <Compile Include="DAO\AccReceiveCheckDAO.cs" />
+    <Compile Include="DAO\AccReceiveDDAO.cs" />
+    <Compile Include="DAO\AccReceiveMDAO.cs" />
+    <Compile Include="DAO\AccReceiveM_BatchDAO.cs" />
+    <Compile Include="DAO\AccReceiveTaxDAO.cs" />
+    <Compile Include="DAO\AccReceiveWriteoffDAO.cs" />
+    <Compile Include="DAO\AccReCheckDAO.cs" />
+    <Compile Include="DAO\AccRemitControlDAO.cs" />
+    <Compile Include="DAO\AccTempReceiptsWriteoffDAO.cs" />
+    <Compile Include="DAO\AccUndueCheckDAO.cs" />
+    <Compile Include="DAO\AccUserDAO.cs" />
+    <Compile Include="DAO\AccVendorDAO.cs" />
+    <Compile Include="DAO\AccViewDAO.cs" />
+    <Compile Include="DAO\AccVouCounterDAO.cs" />
+    <Compile Include="DAO\AccVoumstDDAO.cs" />
+    <Compile Include="DAO\AccVoumstMDAO.cs" />
+    <Compile Include="DAO\AccVoumstM_BatchDAO.cs" />
+    <Compile Include="DAO\AccVoumstTaxDAO.cs" />
+    <Compile Include="DAO\BaseClass.cs" />
+    <Compile Include="DAO\BaseClass2.cs" />
+    <Compile Include="DAO\CommDAO.cs" />
+    <Compile Include="DAO\StoreProcedureDAO.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\DBExtension.cs" />
+    <Compile Include="Helpers\ExcelHelper.cs" />
+    <Compile Include="Helpers\HttpHelper.cs" />
+    <Compile Include="Helpers\LogHelper.cs" />
+    <Compile Include="Helpers\SQL.cs" />
+    <Compile Include="Helpers\StringHelper.cs" />
+    <Compile Include="Models\AccAccCodeModel.cs" />
+    <Compile Include="Models\AccAccKindModel.cs" />
+    <Compile Include="Models\AccAccKind_BatchModel.cs" />
+    <Compile Include="Models\AccAccountAgingPerModel.cs" />
+    <Compile Include="Models\AccACE060MModel.cs" />
+    <Compile Include="Models\AccACF100QModel.cs" />
+    <Compile Include="Models\AccAllowanceDModel.cs" />
+    <Compile Include="Models\AccAllowanceMModel.cs" />
+    <Compile Include="Models\AccAllowanceM_BatchModel.cs" />
+    <Compile Include="Models\AccAssetDeprecModel.cs" />
+    <Compile Include="Models\AccAssetModel.cs" />
+    <Compile Include="Models\AccAssetParmModel.cs" />
+    <Compile Include="Models\AccAssetTransModel.cs" />
+    <Compile Include="Models\AccBalanceControlModel.cs" />
+    <Compile Include="Models\AccAccNameModel.cs" />
+    <Compile Include="Models\AccBalanceModel.cs" />
+    <Compile Include="Models\AccBankBalanceModel.cs" />
+    <Compile Include="Models\AccBankModel.cs" />
+    <Compile Include="Models\AccBPMModel.cs" />
+    <Compile Include="Models\AccBudgetModel.cs" />
+    <Compile Include="Models\AccCheckCounterModel.cs" />
+    <Compile Include="Models\AccCodeMModel.cs" />
+    <Compile Include="Models\AccCompanyModel.cs" />
+    <Compile Include="Models\AccCustomGroupDModel.cs" />
+    <Compile Include="Models\AccCustomGroupMModel.cs" />
+    <Compile Include="Models\AccCustomModel.cs" />
+    <Compile Include="Models\AccDailySaleModel.cs" />
+    <Compile Include="Models\AccDeptModel.cs" />
+    <Compile Include="Models\AccEmployeeModel.cs" />
+    <Compile Include="Models\AccExpenseReceiptDModel.cs" />
+    <Compile Include="Models\AccExpenseReceiptMModel.cs" />
+    <Compile Include="Models\AccInvCounterModel.cs" />
+    <Compile Include="Models\AccInvnoIdModel.cs" />
+    <Compile Include="Models\AccJouralDModel.cs" />
+    <Compile Include="Models\AccJouralMModel.cs" />
+    <Compile Include="Models\AccJouralM_BatchModel.cs" />
+    <Compile Include="Models\AccMemoModel.cs" />
+    <Compile Include="Models\AccMonthAccountModel.cs" />
+    <Compile Include="Models\AccMonthPaCheckModel.cs" />
+    <Compile Include="Models\AccMonthReCheckModel.cs" />
+    <Compile Include="Models\AccMonthSaleCostModel.cs" />
+    <Compile Include="Models\AccMonthValuationModel.cs" />
+    <Compile Include="Models\AccOtherAccountModel.cs" />
+    <Compile Include="Models\AccPaAccountModel.cs" />
+    <Compile Include="Models\AccPaCheckModel.cs" />
+    <Compile Include="Models\AccPayDModel.cs" />
+    <Compile Include="Models\AccPayMModel.cs" />
+    <Compile Include="Models\AccPayM_BatchModel.cs" />
+    <Compile Include="Models\AccPosSalesModel.cs" />
+    <Compile Include="Models\AccPrepaidExpenseDModel.cs" />
+    <Compile Include="Models\AccPrepaidExpenseMModel.cs" />
+    <Compile Include="Models\AccPrepaidExpenseM_Batch.cs" />
+    <Compile Include="Models\AccPrepayAccountDModel.cs" />
+    <Compile Include="Models\AccPrepayAccountMModel.cs" />
+    <Compile Include="Models\AccPrepayAccountM_BatchModel.cs" />
+    <Compile Include="Models\AccPrepayAccountShareModel.cs" />
+    <Compile Include="Models\AccPrintTempModel.cs" />
+    <Compile Include="Models\AccQueryModel.cs" />
+    <Compile Include="Models\AccReAccountModel.cs" />
+    <Compile Include="Models\AccReceiveCheckModel.cs" />
+    <Compile Include="Models\AccReceiveDModel.cs" />
+    <Compile Include="Models\AccReceiveMModel.cs" />
+    <Compile Include="Models\AccReceiveM_BatchModel.cs" />
+    <Compile Include="Models\AccReceiveTaxModel.cs" />
+    <Compile Include="Models\AccReceiveWriteoffModel.cs" />
+    <Compile Include="Models\AccReCheckModel.cs" />
+    <Compile Include="Models\AccRemitControlModel.cs" />
+    <Compile Include="Models\AccRemitModel.cs" />
+    <Compile Include="Models\AccExrateModel.cs" />
+    <Compile Include="Models\AccTempReceiptsWriteoffModel.cs" />
+    <Compile Include="Models\AccUndueCheckModel.cs" />
+    <Compile Include="Models\AccUninvoiceMModel.cs" />
+    <Compile Include="Models\AccUserModel.cs" />
+    <Compile Include="Models\AccVendorModel.cs" />
+    <Compile Include="Models\AccVouCounterModel.cs" />
+    <Compile Include="Models\AccVoumstDModel.cs" />
+    <Compile Include="Models\AccVoumstMModel.cs" />
+    <Compile Include="Models\AccVoumstM_BatchModel.cs" />
+    <Compile Include="Models\AccVoumstTaxModel.cs" />
+    <Compile Include="Models\ACC_ViewModel.cs" />
+    <Compile Include="Models\CommModel.cs" />
+    <Compile Include="Models\StoreProcedureModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="docs\1.ACC_BALANCE.md" />
+    <Content Include="docs\2.ACC_ACC_KIND.md" />
+    <Content Include="docs\14.ACC_MEMO.md" />
+    <Content Include="docs\3.ACC_ACC_CODE.md" />
+    <Content Include="docs\4.ACC_ACCNAME.md" />
+    <Content Include="docs\16.VW_ACCD.md" />
+    <Content Include="docs\12.ACC_BUDGET.md" />
+    <Content Include="docs\13.ACC_BANK.md" />
+    <Content Include="docs\15.ACC_RE_CHECK.md" />
+    <Content Include="docs\10.ACC_JOURAL_D.md" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\AccRemit\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49935</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:44374/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此專案參考這部電腦上所缺少的 NuGet 套件。請啟用 NuGet 套件還原，以下載該套件。如需詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的檔案是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -118,6 +118,27 @@ namespace Models
         public List<AccReceiveM> data { get; set; }
     }
 
+    // 20260316
+    public class AccReceiveM_Query3_in : BaseIn
+    {
+        public AccReceiveM_Query3_item data { get; set; }
+    }
+    public class AccReceiveM_Query3_item
+    {
+        public string CUSTID { get; set; }
+    }
+
+    public class rsAccReceiveM_Query3 : rs
+    {
+        public AccReceiveM_Query3 data { get; set; }
+    }
+    public class AccReceiveM_Query3
+    {
+        public string DUEBANK { get; set; }
+        public string ACNO { get; set; }
+    }
+
+
 
 
 }

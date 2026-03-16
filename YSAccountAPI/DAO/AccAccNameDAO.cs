@@ -614,7 +614,7 @@ LIKE '{data.data.ACNM_ID}%') ";
             sql = $@"SELECT IsNull(ACNM_ID1,'')+IsNull(ACNM_ID2,'')+IsNull(ACNM_ID3,'') as ACNM_ID,* 
 FROM ACC_ACCNAME WHERE ACNM_COMPID = '" + data.data.ACNM_COMPID + "' ";
 
-            sql += " AND ACNM_ID1 LIKE '6%' AND LEN(ACNM_ID1) = 4";
+            sql += " AND ACNM_ID1 LIKE '6%' AND LEN(ACNM_ID1) = 4 AND ACNM_ID2='' ";
             sql += " ORDER BY ACNM_COMPID ";
 
             return query(sql, data.pagination);
@@ -633,7 +633,7 @@ FROM ACC_ACCNAME WHERE ACNM_COMPID = '" + data.data.ACNM_COMPID + "' ";
             }
 
             sql = $@"SELECT IsNull(ACNM_ID1,'')+IsNull(ACNM_ID2,'')+IsNull(ACNM_ID3,'') as ACNM_ID,* 
-FROM ACC_ACCNAME WHERE LEN(ACNM_ID1) = 4 AND ACNM_COMPID = '" + data.data.ACNM_COMPID + "' ";
+FROM ACC_ACCNAME WHERE LEN(ACNM_ID1) = 4  AND ACNM_ID2='' AND ACNM_COMPID = '" + data.data.ACNM_COMPID + "' ";
 
             if (!string.IsNullOrEmpty(data.data.ACNM_ID))
                 sql += $@" AND (IsNull(ACNM_ID1,'')+IsNull(ACNM_ID2,'')+IsNull(ACNM_ID3,'') 

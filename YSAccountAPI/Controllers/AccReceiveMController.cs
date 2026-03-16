@@ -47,6 +47,27 @@ namespace YSAccountAPI.Controllers
         }
 
 
+        [Route("ACC_RECEIVE_M/Query2")]
+        [HttpPost, ActionName("Query2")]
+        public HttpResponseMessage Query2(AccReceiveM_ACF030M_ins data)
+        {
+            Log.Info("API : ACC_RECEIVE_M/Query2");
+
+            rsAccReceiveM_ACF030M rs = dao.ACF030M(data.data);
+            return CommDAO.getResponse(Request, rs);
+        }
+
+        // 20260316
+        [Route("ACC_RECEIVE_M/Query3")]
+        [HttpPost, ActionName("Query3")]
+        public HttpResponseMessage Query3(AccReceiveM_Query3_in data)
+        {
+            Log.Info("API : ACC_RECEIVE_M/Query3");
+
+            rsAccReceiveM_Query3 rs = dao.AccReceiveM_Query3(data.data.CUSTID);
+            return CommDAO.getResponse(Request, rs);
+        }
+
 
     }
 }

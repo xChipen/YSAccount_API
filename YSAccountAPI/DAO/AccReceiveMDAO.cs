@@ -269,6 +269,37 @@ WHERE 1=1 ";
             };
         }
 
+        public rsAccReceiveM_Query3 AccReceiveM_Query3(string CUSTID)
+        {
+            string sql = $@"SELECT TOP 1  
+REAK_BANKID, 
+REAK_ACNO
+FROM ACC_RECEIVE_M,ACC_RECEIVE_CHECK
+WHERE RECM_CUSTID = '{CUSTID}'
+AND   RECM_NO = REAK_NO
+AND   RECM_VALID = 'Y'
+ORDER BY RECM_DATE DESC";
+
+            DataTable dt = comm.DB.RunSQL(sql);
+
+            string DUEBANK = "";
+            string ACNO = "";
+            if (dt.Rows.Count != 0)
+            {
+                DUEBANK = dt.Rows[0]["REAK_BANKID"].ToString();
+                ACNO = dt.Rows[0]["REAK_ACNO"].ToString();
+            }
+
+            return new rsAccReceiveM_Query3
+            {
+                result = CommDAO.getRsItem(),
+                data = new Models.AccReceiveM_Query3
+                {
+                    DUEBANK = DUEBANK,
+                    ACNO = ACNO
+                }
+            };
+        }
 
 
 

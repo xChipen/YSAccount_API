@@ -20,6 +20,7 @@ namespace Models
         public string TRAN_NAME { get; set; }
         public string RECM_REMARK { get; set; }     //2024/12/20 收款備註
         public string RECM_TR_FLAG { get; set; }
+        public string RECM_REC_FLAG { get; set; }  // 20260326
     }
     public class AccReceiveM_item: AccReceiveM
     {

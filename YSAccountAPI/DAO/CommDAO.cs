@@ -443,6 +443,18 @@ AND convert(char(8), {fileName} ,112) <= '{ string.Format("{0:yyyyMMdd}", eData)
             else
                 return "";
         }
+
+        public static string sql_ep_date_between2(DateTime? sData, DateTime? eData, string fileName)
+        {
+            if (sData != null && eData != null)
+                return $@" 
+AND convert(char(8), {fileName} ,112) > '{ string.Format("{0:yyyyMMdd}", sData)}'
+AND convert(char(8), {fileName} ,112) < '{ string.Format("{0:yyyyMMdd}", eData)}'
+";
+            else
+                return "";
+        }
+
         public static string sql_ep_between(string sNO, string eNO, string fileName)
         {
             if (!string.IsNullOrEmpty(sNO) && !string.IsNullOrEmpty(eNO))

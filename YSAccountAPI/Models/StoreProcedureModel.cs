@@ -100,6 +100,8 @@ namespace Models
         public string COMP_ID { get; set; }
         public string YearS { get; set; }   // YYYY/MM/DD
         public string MonthS { get; set; }  // MM
+        public string USER_NM { get; set; }
+        public string USER_ID { get; set; }
     }
 
     public class ACG070B_ins

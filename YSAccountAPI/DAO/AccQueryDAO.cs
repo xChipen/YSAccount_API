@@ -45,7 +45,7 @@ and PURM_VOUNO = '' AND PURM_VALID = 'Y' AND PURM_KIND = '1'
             else if (data.KIND == 2)
             {
                 sql = $@"Select
-b.TRAN_ABBR as ABBR, c.TRAN_ABBR as ABBR2 a.IMPM_NO as NO, a.IMPM_DATE as DATE, 
+b.TRAN_ABBR as ABBR, c.TRAN_ABBR as ABBR2, a.IMPM_NO as NO, a.IMPM_DATE as DATE, 
 a.IMPM_CURRID as CURRID, a.IMPM_NT_AMT as NT_AMT ,
 IMPM_FOR_AMT as FOR_AMT, 
 IsNull(IMPM_TARIFF,0)
@@ -73,7 +73,7 @@ and IMPM_VOUNO ='' AND IMPM_VALID = 'Y' AND IMPM_KIND = '1'
             else if (data.KIND == 3)
             {
                 sql = $@"Select
-b.TRAN_ABBR as ABBR, c.TRAN_ABBR as ABBR2 a.IMPM_NO as NO, a.IMPM_DATE as DATE, 
+b.TRAN_ABBR as ABBR, c.TRAN_ABBR as ABBR2, a.IMPM_NO as NO, a.IMPM_DATE as DATE, 
 a.IMPM_CURRID as CURRID, a.IMPM_NT_AMT as NT_AMT ,
 IMPM_FOR_AMT as FOR_AMT, 
 IsNull(IMPM_TARIFF,0)

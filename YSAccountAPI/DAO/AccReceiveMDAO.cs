@@ -117,12 +117,18 @@ AND RECM_COMPID='{RECM_COMPID}' ";
 
         public DataTable _Query(AccReceiveM_item2 data)
         {
-            string sql = $@"SELECT * from {tableName} WHERE 1=1 
+
+            string sql = $@"
+SELECT CONVERT(VARCHAR(10),RECM_DATE,111) as RECM_DATE, RECM_NO, RECM_CUSTID, ISNULL(TRAN_NAME,''), RECM_A_USER_NM
+FROM ACC_RECEIVE_M WITH (NOLOCK)
+LEFT JOIN VW_TRAIN WITH (NOLOCK) ON RECM_COMPID = TRAN_COMPID AND RECM_CUSTID = TRAN_ID
+WHERE RECM_VALID='Y'
 AND RECM_COMPID='{data.RECM_COMPID}' ";
+
             sql += CommDAO.sql_ep(data.RECM_NO, "RECM_NO");
             sql += CommDAO.sql_ep(data.RECM_VOUNO, "RECM_VOUNO ");
-            //sql += CommDAO.sql_ep_date(data.RECM_DATE, "RECM_DATE ");
-            sql += CommDAO.sql_ep_date_between(data.RECM_DATE_B, data.RECM_DATE_E, "RECM_DATE ");
+
+            sql += CommDAO.sql_ep_date_between2(data.RECM_DATE_B, data.RECM_DATE_E, "RECM_DATE ");
 
             if (data.RECM_A_USER_ID.StartsWith("<>"))
             {

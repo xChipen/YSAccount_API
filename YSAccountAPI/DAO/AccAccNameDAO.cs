@@ -633,42 +633,34 @@ FROM ACC_ACCNAME WHERE ACNM_COMPID = '" + data.data.ACNM_COMPID + "' ";
             }
 
             sql = $@"SELECT IsNull(ACNM_ID1,'')+IsNull(ACNM_ID2,'')+IsNull(ACNM_ID3,'') as ACNM_ID,* 
-FROM ACC_ACCNAME WHERE LEN(ACNM_ID1) = 4  AND ACNM_ID2='' AND ACNM_COMPID = '" + data.data.ACNM_COMPID + "' ";
+FROM ACC_ACCNAME WHERE LEN(ACNM_ID1) = 4  
+AND　(
+      (ACNM_C_NAME = '')
+       OR 
+      (ACNM_C_NAME <> ''  AND ACNM_C_NAME LIKE '%{data.data.ACNM_C_NAME}%')
+     )
+AND ACNM_COMPID = '" + data.data.ACNM_COMPID + "'";
 
             if (!string.IsNullOrEmpty(data.data.ACNM_ID))
                 sql += $@" AND (IsNull(ACNM_ID1,'')+IsNull(ACNM_ID2,'')+IsNull(ACNM_ID3,'') 
 LIKE '{data.data.ACNM_ID}%') ";
 
-            if (data.data.ACNM_ID1 != null)
-                sql += CommDAO.sql_ep(data.data.ACNM_ID1, "ACNM_ID1");
-            if (data.data.ACNM_ID2 != null)
-                sql += CommDAO.sql_ep(data.data.ACNM_ID2, "ACNM_ID2");
-            if (data.data.ACNM_ID3 != null)
-                sql += CommDAO.sql_ep(data.data.ACNM_ID3, "ACNM_ID3");
+            sql += " ORDER BY IsNull(ACNM_ID1,'') + IsNull(ACNM_ID2,'') + IsNull(ACNM_ID3,'')";
+
+            //if (data.data.ACNM_ID1 != null)
+            //    sql += CommDAO.sql_ep(data.data.ACNM_ID1, "ACNM_ID1");
+            //if (data.data.ACNM_ID2 != null)
+            //    sql += CommDAO.sql_ep(data.data.ACNM_ID2, "ACNM_ID2");
+            //if (data.data.ACNM_ID3 != null)
+            //    sql += CommDAO.sql_ep(data.data.ACNM_ID3, "ACNM_ID3");
 
             #region SQL Other
-            if (!string.IsNullOrEmpty(data.data.ACNM_C_NAME))
-            {
-                sql += $" AND ACNM_C_NAME Like '%{data.data.ACNM_C_NAME}%'";
-            }
-            if (!string.IsNullOrEmpty(data.data.ACNM_J_NAME))
-            {
-                sql += $" AND ACNM_J_NAME Like '%{data.data.ACNM_J_NAME}%'";
-            }
-            if (!string.IsNullOrEmpty(data.data.ACNM_E_NAME))
-            {
-                sql += $" AND ACNM_E_NAME Like '%{data.data.ACNM_E_NAME}%'";
-            }
             //20231204 ACE090R_銀行存款調節表 ACNM_PK_FLG = 'Y'
-            sql += CommDAO.sql_ep(data.data.ACNM_PK_FLG, "ACNM_PK_FLG");
-            sql += CommDAO.sql_ep(data.data.ACNM_AP_FLG, "ACNM_AP_FLG");
+            //sql += CommDAO.sql_ep(data.data.ACNM_PK_FLG, "ACNM_PK_FLG");
+            //sql += CommDAO.sql_ep(data.data.ACNM_AP_FLG, "ACNM_AP_FLG");
             //20240322
-            sql += CommDAO.sql_ep(data.data.ACNM_FA_FLG, "ACNM_FA_FLG");
+            //sql += CommDAO.sql_ep(data.data.ACNM_FA_FLG, "ACNM_FA_FLG");
             #endregion
-
-            sql += " AND LEN(ACNM_ID1) = 4 "; // 20260210
-
-            sql += " ORDER BY ACNM_COMPID ";
 
             return query(sql, data.pagination);
         }

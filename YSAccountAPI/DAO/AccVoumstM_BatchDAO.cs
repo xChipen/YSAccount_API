@@ -1003,36 +1003,39 @@ namespace DAO
 
                 if (bAdd)
                 {// 新增
-                    //#region accVoumstD
-                    //if (bOK && data.accVoumstD!=null && data.accVoumstD.Count!=0)
+                 //#region accVoumstD
+                 //if (bOK && data.accVoumstD!=null && data.accVoumstD.Count!=0)
+                 //{
+                 //    foreach (AccVoumstD_item item in data.accVoumstD)
+                 //    {
+                 //        bOK = accVoumstD.AUD(item, employeeNo, name, dao);
+                 //        if (!bOK) break;
+                 //    }
+                 //}
+                 //#endregion
+
+                    //20260319 Stop
+                    #region accVoumstTax
+                    //if (bOK && data.accVoumstTax!=null && data.accVoumstTax.Count!=0)
                     //{
-                    //    foreach (AccVoumstD_item item in data.accVoumstD)
+                    //    foreach (AccVoumstTax_item item in data.accVoumstTax)
                     //    {
-                    //        bOK = accVoumstD.AUD(item, employeeNo, name, dao);
+                    //        bOK = accVoumstTax.AUD(item, employeeNo, name, dao);
                     //        if (!bOK) break;
                     //    }
                     //}
-                    //#endregion
-
-                    #region accVoumstTax
-                    if (bOK && data.accVoumstTax!=null && data.accVoumstTax.Count!=0)
-                    {
-                        foreach (AccVoumstTax_item item in data.accVoumstTax)
-                        {
-                            bOK = accVoumstTax.AUD(item, employeeNo, name, dao);
-                            if (!bOK) break;
-                        }
-                    }
                     #endregion
+
+                    //20260319 Stop
                     #region accVouCounter
-                    if (bOK && data.accVouCounter != null && data.accVouCounter.Count!=0)
-                    {
-                        foreach (AccVouCounter_item item in data.accVouCounter)
-                        {
-                            bOK = accVouCounter.AUD(item, employeeNo, name, dao);
-                            if (!bOK) break;
-                        }
-                    }
+                    //if (bOK && data.accVouCounter != null && data.accVouCounter.Count!=0)
+                    //{
+                    //    foreach (AccVouCounter_item item in data.accVouCounter)
+                    //    {
+                    //        bOK = accVouCounter.AUD(item, employeeNo, name, dao);
+                    //        if (!bOK) break;
+                    //    }
+                    //}
                     #endregion
                 }
 
@@ -1167,6 +1170,7 @@ namespace DAO
             //    if (bOK)
             //        bOK = accVoumstD.DeleteAll(COMPID, NO, dao);
             //    if (bOK)
+
                     bOK = accVoumstTax.DeleteAll(COMPID, NO, dao);
             //}
             return bOK;

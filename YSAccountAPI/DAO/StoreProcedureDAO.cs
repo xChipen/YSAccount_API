@@ -242,7 +242,9 @@ SELECT MOAC_CURRID,MAX(ISNULL(EXRA_RATE_E,0))
             Dictionary<string, object> ps = new Dictionary<string, object> {
                 { "@COMP_ID", data.data.COMP_ID},
                 { "@YearS"  , data.data.YearS},
-                { "@MonthS" , data.data.MonthS}
+                { "@MonthS" , data.data.MonthS},
+                { "@USER_ID" , data.data.USER_ID},
+                { "@USER_NM" , data.data.USER_NM}
             };
 
             comm.DB.ExecSP("ACB120B", ps);
@@ -312,20 +314,37 @@ AND MOVA_MONTH='{MonthS}'
                 cmd.Parameters.Add(new SqlParameter("@COMP_ID", data.data.COMP_ID));
                 cmd.Parameters.Add(new SqlParameter("@YearS", data.data.YearS));
                 cmd.Parameters.Add(new SqlParameter("@MonthS", data.data.MonthS));
+                cmd.Parameters.Add(new SqlParameter("@USER_ID", data.data.USER_ID));
+                cmd.Parameters.Add(new SqlParameter("@USER_NM", data.data.USER_NM));
 
-                SqlParameter sp = new SqlParameter("@VOU_NO", SqlDbType.VarChar, 15);
-                sp.Direction = ParameterDirection.Output;
-                cmd.Parameters.Add(sp);
+                //SqlParameter sp = new SqlParameter("@VOU_NO", SqlDbType.VarChar, 15);
+                //sp.Direction = ParameterDirection.Output;
+                //cmd.Parameters.Add(sp);
 
                 comm.DB.ExecSP(cmd);
 
                 return new ACB140B_rs()
                 {
                     result = new rsItem { retCode = 0, retMsg = "成功" },
-                    data = new ACB140B_item { VOU_NO = sp.Value.ToString() }
+                    data = new ACB140B_item { VOU_NO = getACB140B_VOU_NO(data.data.USER_ID) }  // 20260326
                 };
             }
 
+        }
+
+        private string getACB140B_VOU_NO(string USER_ID)
+        {
+            string sql = $@"SELECT  PRTM_PARAMETER1 
+FROM  ACC_PRINT_TEMP
+WHERE PRTM_PROGID ='ACB140B'
+And PRTM_USERID = '{USER_ID}'
+";
+            DataTable dt = comm.DB.RunSQL(sql);
+
+            if (dt.Rows.Count != 0)
+                return dt.Rows[0]["PRTM_PARAMETER1"].ToString();
+
+            return "";
         }
 
         // ACG070B 應收票據兌現轉傳票處理
@@ -776,6 +795,7 @@ AND MOVA_MONTH='{MonthS}'
                     cmd.Parameters.Add(new SqlParameter("@VOMD_TRANID", data.VOMD_TRANID));
                     cmd.Parameters.Add(new SqlParameter("@VOMD_INVNO", data.VOMD_INVNO));
                     cmd.Parameters.Add(new SqlParameter("@VOMD_DUEFLG", data.VOMD_DUEFLG));
+                    cmd.Parameters.Add(new SqlParameter("@VOMD_TAXCD", data.VOMD_TAXCD));
 
                     if (data.VOMD_DUEDATE != null)
                         cmd.Parameters.Add(new SqlParameter("@VOMD_DUEDATE", data.VOMD_DUEDATE));

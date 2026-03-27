@@ -256,7 +256,7 @@ namespace DAO
 
                 #region AccPrepayAccountD
                 DataTable dtCode = accPrepayAccountD._QueryBatch(new AccPrepayAccountD_item() { PRAD_COMPID = COMPID, PRAD_NO = NO });
-                if (dtCode.Rows.Count != 0)
+                if (dtCode!= null && dtCode.Rows.Count != 0)
                 {
                     foreach (DataRow code in dtCode.Rows)
                     {
@@ -277,7 +277,7 @@ namespace DAO
 
                 #region AccPrepayAccountShare
                 DataTable dtShare = accPrepayAccountShare._QueryBatch(new AccPrepayAccountShare() { PRAS_COMPID = COMPID, PRAS_NO = NO });
-                if (dtCode.Rows.Count != 0)
+                if (dtShare!= null && dtCode.Rows.Count != 0)
                 {
                     foreach (DataRow code in dtShare.Rows)
                     {

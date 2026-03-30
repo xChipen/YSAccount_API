@@ -8,6 +8,7 @@ using COMM;
 using Helpers;
 using System.Data.SqlClient;
 using System.Transactions;
+using Newtonsoft.Json;
 
 namespace DAO
 {
@@ -778,6 +779,7 @@ And PRTM_USERID = '{USER_ID}'
             {
                 try
                 {
+                    Log.Info(JsonConvert.SerializeObject(data));
                     cmd.CommandText = SP_NAME;
 
                     cmd.Parameters.Add(new SqlParameter("@VOMD_COMPID", data.VOMD_COMPID));
@@ -795,7 +797,6 @@ And PRTM_USERID = '{USER_ID}'
                     cmd.Parameters.Add(new SqlParameter("@VOMD_TRANID", data.VOMD_TRANID));
                     cmd.Parameters.Add(new SqlParameter("@VOMD_INVNO", data.VOMD_INVNO));
                     cmd.Parameters.Add(new SqlParameter("@VOMD_DUEFLG", data.VOMD_DUEFLG));
-                    cmd.Parameters.Add(new SqlParameter("@VOMD_TAXCD", data.VOMD_TAXCD));
 
                     if (data.VOMD_DUEDATE != null)
                         cmd.Parameters.Add(new SqlParameter("@VOMD_DUEDATE", data.VOMD_DUEDATE));
@@ -811,12 +812,12 @@ And PRTM_USERID = '{USER_ID}'
                     cmd.Parameters.Add(new SqlParameter("@VOMD_CNT", data.VOMD_CNT));
                     cmd.Parameters.Add(new SqlParameter("@VOMD_STYM", data.VOMD_STYM));
                     cmd.Parameters.Add(new SqlParameter("@VOMD_ENYM", data.VOMD_ENYM));
+                    cmd.Parameters.Add(new SqlParameter("@VOMD_TAXCD", data.VOMD_TAXCD));
                     cmd.Parameters.Add(new SqlParameter("@VOMD_D_ACCD", data.VOMD_D_ACCD));
                     cmd.Parameters.Add(new SqlParameter("@VOMD_D_DEPTID", data.VOMD_D_DEPTID));
                     cmd.Parameters.Add(new SqlParameter("@VOMD_D_INVNO", data.VOMD_D_INVNO));
                     cmd.Parameters.Add(new SqlParameter("@USER_ID", employeeId));
                     cmd.Parameters.Add(new SqlParameter("@USER_NM", name));
-                    cmd.Parameters.Add(new SqlParameter("@VOMD_TAXCD", name));
                     cmd.Parameters.Add(new SqlParameter("@VOMD_RELATIVE_NO", data.VOMD_RELATIVE_NO));
 
                     comm.DB.ExecSP(cmd);

@@ -111,7 +111,9 @@ namespace DAO
                     VOMD_D_DEPTID = "",
                     VOMD_D_INVNO = "",
                     State = "A",
-                    VOMD_RELATIVE_NO = sour.VOMD_RELATIVE_NO
+                    VOMD_RELATIVE_NO = sour.VOMD_RELATIVE_NO,
+                    VOMD_TAXCD = sour.VOMD_TAXCD,
+                    VOMD_EXPENSE = sour.VOMD_EXPENSE
                 };
                 rs.Add(item);
             }

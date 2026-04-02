@@ -20,7 +20,7 @@ namespace Models
         public string TRAN_NAME { get; set; }
         public string RECM_REMARK { get; set; }     //2024/12/20 收款備註
         public string RECM_TR_FLAG { get; set; }
-        public string RECM_REC_FLAG { get; set; }  // 20260326
+        public string RECM_REC_FLG { get; set; }  // 20260326
     }
     public class AccReceiveM_item: AccReceiveM
     {
@@ -139,6 +139,29 @@ namespace Models
         public string ACNO { get; set; }
     }
 
+    // 20260402
+    public class AccReceiveM_Query4_in : BaseIn
+    {
+        public AccReceiveM_Query4_item data { get; set; }
+    }
+    public class AccReceiveM_Query4_item
+    {
+        public string BDate { get; set; }
+        public string EDate { get; set; }
+    }
+
+    public class rsAccReceiveM_Query4 : rs
+    {
+        public List<AccReceiveM_Query4> data { get; set; }
+    }
+    public class AccReceiveM_Query4
+    {
+        public string RECM_DATEK { get; set; }
+        public string RECM_NO { get; set; }
+        public string RECM_CUSTID { get; set; }
+        public string TRAN_NAME { get; set; }
+        public string RECM_A_USER_NM { get; set; }
+    }
 
 
 

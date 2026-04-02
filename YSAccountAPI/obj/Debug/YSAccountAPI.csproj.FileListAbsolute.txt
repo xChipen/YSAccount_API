@@ -127,4 +127,3 @@ D:\Customer\_C#\聯錸二代POS\YSAccountAPI2\YSAccountAPI\bin\zh-Hant\System.We
 D:\Customer\_C#\聯錸二代POS\YSAccountAPI2\YSAccountAPI\bin\zh-Hant\System.Web.Http.WebHost.resources.dll
 D:\Customer\_C#\聯錸二代POS\YSAccountAPI2\YSAccountAPI\obj\Debug\YSAccountAPI.dll
 D:\Customer\_C#\聯錸二代POS\YSAccountAPI2\YSAccountAPI\obj\Debug\YSAccountAPI.pdb
-D:\Customer\_C#\聯錸二代POS\YSAccountAPI2\YSAccountAPI\obj\Debug\YSAccountAPI.csprojResolveAssemblyReference.cache

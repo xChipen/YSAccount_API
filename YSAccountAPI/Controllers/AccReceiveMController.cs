@@ -68,6 +68,17 @@ namespace YSAccountAPI.Controllers
             return CommDAO.getResponse(Request, rs);
         }
 
+        // 20260402
+        [Route("ACC_RECEIVE_M/Query4")]
+        [HttpPost, ActionName("Query4")]
+        public HttpResponseMessage Query4(AccReceiveM_Query4_in data)
+        {
+            Log.Info("API : ACC_RECEIVE_M/Query4");
+
+            rsAccReceiveM_Query4 rs = dao.AccReceiveM_Query4(data.data.BDate, data.data.EDate);
+            return CommDAO.getResponse(Request, rs);
+        }
+
 
     }
 }

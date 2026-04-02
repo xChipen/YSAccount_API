@@ -248,6 +248,7 @@ namespace DAO
                     PRAM_U_USER_ID = dr["PRAM_U_USER_ID"].ToString(),
                     PRAM_U_USER_NM = dr["PRAM_U_USER_NM"].ToString(),
                     PRAM_U_DATE = dr.FieldOrDefault<DateTime?>("PRAM_U_DATE"),
+                    PRAM_TAXCD = dr["PRAM_TAXCD"].ToString(),
 
                     child = new List<AccPrepayAccountD_item>(),
                     share = new List<AccPrepayAccountShare>()
@@ -269,6 +270,7 @@ namespace DAO
                             PRAD_NT_AMT = code.FieldOrDefault<decimal>("PRAD_NT_AMT"),
                             PRAD_VOUNO = code["PRAD_VOUNO"].ToString(),
                             PRAD_TR_FLG = code["PRAD_TR_FLG"].ToString(),
+                            PRAD_TAX = code.FieldOrDefault<decimal>("PRAD_TAX"),
                         };
                         item.child.Add(child);
                     }

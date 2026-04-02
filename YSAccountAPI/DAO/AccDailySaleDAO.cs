@@ -25,6 +25,31 @@ namespace DAO
             };
         }
 
+        //                                     yyyy/mm/dd
+        public rsAccDailySale_qry2 query2(string Kind, string DSAL_DATE)
+        {
+            string sql = $@"Select DSAL_DEPTID, DEPT_NAME FROM ACC_DAILY_SALE
+LEFT JOIN ACC_DEPT ON DSAL_DEPTID = DEPT_ID
+where
+  DSAL_KIND = '{Kind}' 
+  AND DSAL_DATE = '{DSAL_DATE}'
+  AND DSAL_VOUNO = ''
+GROUP BY DSAL_DEPTID, DEPT_NAME";
+
+            DataTable dt = comm.DB.RunSQL(sql);
+
+            return new rsAccDailySale_qry2 {
+                result = CommDAO.getRsItem(),
+                data = dt.ToList<rsAccDailySale2>()
+            };
+        }
+
+
+
+
+
+
+
 
 
 

@@ -42,4 +42,27 @@ namespace Models
         public List<AccDailySale> data { get; set; }
     }
 
+    // 20260402
+    public class AccDailySale_qry2 : BaseIn
+    {
+        public AccDailySale2 data { get; set; }
+    }
+
+    public class AccDailySale2 : AccDailySale
+    {
+        public string Kind { get; set; }
+    }
+
+    public class rsAccDailySale2
+    {
+        public string DSAL_DEPTID { get; set; }
+        public string DEPT_NAME { get; set; }
+    }
+
+    public class rsAccDailySale_qry2 : rs
+    {
+        public List<rsAccDailySale2> data { get; set; }
+    }
+
+
 }

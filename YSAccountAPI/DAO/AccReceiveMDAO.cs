@@ -307,6 +307,26 @@ ORDER BY RECM_DATE DESC";
             };
         }
 
+        public rsAccReceiveM_Query4 AccReceiveM_Query4(string BDate, string EDate)
+        {
+            string sql = $@"SELECT CONVERT(VARCHAR(10),RECM_DATE,111) as RECM_DATE
+,RECM_NO, RECM_CUSTID, ISNULL(TRAN_NAME,'') as TRAN_NAME, RECM_A_USER_NM
+
+FROM ACC_RECEIVE_M WITH (NOLOCK)
+LEFT JOIN VW_TRAIN  WITH (NOLOCK) ON RECM_COMPID = TRAN_COMPID AND RECM_CUSTID = TRAN_ID
+WHERE RECM_VALID='Y'
+AND RECM_DATE  < '{EDate}'
+AND RECM_DATE  > '{BDate}'
+";
+
+            DataTable dt = comm.DB.RunSQL(sql);
+
+            return new rsAccReceiveM_Query4
+            {
+                result = CommDAO.getRsItem(),
+                data = dt.ToList<AccReceiveM_Query4>()
+            };
+        }
 
 
     }

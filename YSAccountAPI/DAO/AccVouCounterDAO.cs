@@ -50,8 +50,22 @@ namespace DAO
                 NO += "0001";
             }
 
+            //upDateNO(VCNT_COMPID, VCNT_DATE, iNO);
+
             return NO;
         }
+
+//        private void upDateNO(string VCNT_COMPID, DateTime? VCNT_DATE, int NO)
+//        {
+//            string sql = $@"Update {tableName} set VCNT_NO={NO} where  VCNT_COMPID='{VCNT_COMPID}' 
+//AND convert(char(8), {VCNT_DATE} ,112) = '{ string.Format("{0:yyyyMMdd}", VCNT_DATE)}'
+//";
+//            if (NO == 1)
+//                sql = "INsert into ";
+
+
+//            comm.DB.ExecSQL(sql);
+//        }
 
         #region Batch call
 

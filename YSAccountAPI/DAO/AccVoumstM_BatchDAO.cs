@@ -1030,14 +1030,14 @@ namespace DAO
 
                     //20260319 Stop
                     #region accVouCounter
-                    //if (bOK && data.accVouCounter != null && data.accVouCounter.Count!=0)
-                    //{
-                    //    foreach (AccVouCounter_item item in data.accVouCounter)
-                    //    {
-                    //        bOK = accVouCounter.AUD(item, employeeNo, name, dao);
-                    //        if (!bOK) break;
-                    //    }
-                    //}
+                    if (data.accVouCounter != null && data.accVouCounter.Count != 0)
+                    {
+                        foreach (AccVouCounter_item item in data.accVouCounter)
+                        {
+                            bOK = accVouCounter.AUD(item, employeeNo, name, dao);
+                            if (!bOK) break;
+                        }
+                    }
                     #endregion
                 }
 
@@ -1641,7 +1641,9 @@ WHERE 1=1 ";
                             VOMD_D_ACCD = code["VOMD_D_ACCD"].ToString(),
                             VOMD_D_DEPTID = code["VOMD_D_DEPTID"].ToString(),
                             VOMD_D_INVNO = code["VOMD_D_INVNO"].ToString(),
-                            VOMD_EXPENSE = code["VOMD_EXPENSE"].ToString()
+                            VOMD_EXPENSE = code["VOMD_EXPENSE"].ToString(),
+                            VOMD_TAXCD = code["VOMD_TAXCD"].ToString(),
+                            VOMD_RELATIVE_NO = code["VOMD_RELATIVE_NO"].ToString(),
                         };
                         rsItem.accVoumstD.Add(child);
                     }

@@ -203,6 +203,37 @@ namespace YSAccountAPI.Controllers
             ACB110B_rs rs = dao.runACB160B1(data);
             return CommDAO.getResponse(Request, rs);
         }
+
+        [Route("SP/ACB160B3")]
+        [HttpPost, ActionName("ACB160B3")]
+        public HttpResponseMessage ACB160B3(ACB160B1_ins data)
+        {
+            Log.Info("API : SP/ACB160B3");
+
+            ACB110B_rs rs = dao.runACB160B1(data, "ACB160B3");
+            return CommDAO.getResponse(Request, rs);
+        }
+
+        [Route("SP/ACB160B4")]
+        [HttpPost, ActionName("ACB160B4")]
+        public HttpResponseMessage ACB160B4(ACB160B1_ins data)
+        {
+            Log.Info("API : SP/ACB160B4");
+
+            ACB110B_rs rs = dao.runACB160B1(data, "ACB160B4");
+            return CommDAO.getResponse(Request, rs);
+        }
+
+        [Route("SP/ACB160B5")]
+        [HttpPost, ActionName("ACB160B5")]
+        public HttpResponseMessage ACB160B5(ACB160B1_ins data)
+        {
+            Log.Info("API : SP/ACB160B5");
+
+            ACB110B_rs rs = dao.runACB160B1(data, "ACB160B5");
+            return CommDAO.getResponse(Request, rs);
+        }
+
         //[Route("SP/ACB180B")]
         //[HttpPost, ActionName("ACB180B")]
         //public HttpResponseMessage ACB180B(ACB160B1_ins data)

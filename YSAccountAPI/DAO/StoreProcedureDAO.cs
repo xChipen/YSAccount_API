@@ -958,6 +958,13 @@ And PRTM_USERID = '{USER_ID}'
             }
         }
 
+
+
+
+
+
+
+
         public rs runACB160B_BATCH(ACB160B_BATCH_ins data)
         {
             #region 檢查資料
